@@ -9,6 +9,9 @@ else:
     quit()
 
 headers = {'API-KEY': 'xxx'}
-response = requests.post('https://xxx.abuse.ch/api/submit/', files={'file': open(file,'rb')}, headers=headers)
+post_data = {
+    "public": 1 # Defines whether the submitted sample is sharable (1) or not (0)
+}
+response = requests.post('https://xxx.abuse.ch/api/submit/', data=post_data, files={'file': open(file,'rb')}, headers=headers)
 
 print(response.content.decode("utf-8", "ignore"))
